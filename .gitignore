@@ -140,3 +140,4 @@ Desktop.ini
 .eslintcache
 /.idea/
 /target/
+!/jars/lombok.jar
