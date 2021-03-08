@@ -15,17 +15,8 @@ jobs:
       # Checkout the code as the first step.
       - checkout
       # Use mvn clean and package as the standard maven build phase
-#      - run:
-#          name: Build
-#          command: mvn -B -DskipTests clean package
       - run: java --version
       - run: mvn install:install-file -DgroupId=org.projectlombock -DartifactId=lombok -Dversion=1.18.18 -Dpackaging=jar -Dfile=jars/lombok.jar
-#      - run:
-#          name: Clean
-#          command: mvn clean install -U
-#      - run:
-#          name: Build
-#          command: mvn -e -DskipTests package
       # Then run your tests!
       - run: mvn -DskipTests clean install dependency:resolve-plugins dependency:go-offline
       - run:
