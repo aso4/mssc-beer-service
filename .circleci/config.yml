@@ -18,13 +18,15 @@ jobs:
 #      - run:
 #          name: Build
 #          command: mvn -B -DskipTests clean package
-      - run:
-          name: Clean
-          command: mvn clean install -U
-      - run:
-          name: Build
-          command: mvn -e -DskipTests package
+      - run: java --version
+#      - run:
+#          name: Clean
+#          command: mvn clean install -U
+#      - run:
+#          name: Build
+#          command: mvn -e -DskipTests package
       # Then run your tests!
+      - run: mvn -DskipTests clean install dependency:resolve-plugins dependency:go-offline
       - run:
           name: Test
           command: mvn test
