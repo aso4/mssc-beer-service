@@ -3,6 +3,7 @@ package guru.springframework.msscbeerservice.web.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import guru.springframework.msscbeerservice.web.model.BeerDto;
 import guru.springframework.msscbeerservice.web.model.BeerStyleEnum;
+import org.assertj.core.data.Offset;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 //import org.junit.platform.commons.util.StringUtils;
@@ -19,6 +20,7 @@ import org.springframework.util.StringUtils;
 
 import javax.print.attribute.standard.Media;
 import java.math.BigDecimal;
+import java.time.OffsetDateTime;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -56,10 +58,10 @@ class BeerControllerTest {
                                 parameterWithName("iscold").description("Is Beer Cold Query param")
                         ),
                         responseFields(
-                                fieldWithPath("id").description("Id of Beer"),
+                                fieldWithPath("id").description("Id of Beer").type(UUID.class),
                                 fieldWithPath("version").description("Version number"),
-                                fieldWithPath("createdDate").description("Date Created"),
-                                fieldWithPath("lastModifiedDate").description("Date Updated"),
+                                fieldWithPath("createdDate").description("Date Created").type(OffsetDateTime.class),
+                                fieldWithPath("lastModifiedDate").description("Date Updated").type(OffsetDateTime.class),
                                 fieldWithPath("beerName").description("Beer Name"),
                                 fieldWithPath("beerStyle").description("Beer Style"),
                                 fieldWithPath("upc").description("UPC of Beer"),
